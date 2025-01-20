@@ -1,4 +1,64 @@
-
 version: 2
 
-models: []
+models:
+  - name: dim_activities
+    description: "Tabel dimensi kegiatan"
+    columns:
+      - name: id
+        description: "Primary key dari kegiatan"
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Nama kegiatan"
+        tests:
+          - not_null
+
+  - name: dim_entities
+    description: "Tabel dimensi faskes yang juga berisi informasi kabupaten dan provinsi dari faskes bersangkutan"
+    columns:
+      - name: id
+        description: "Primary key faskes"
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Nama faskes"
+        tests:
+          - not_null
+      - name: regency_name
+        description: "Nama kabupaten atau kota faskes"
+      - name: province_name
+        description: "Nama provinsi faskes"
+      - name: tag
+        description: "Tag faskes"
+
+  - name: dim_master_material
+    description: "Tabel dimensi yang berisi informasi material"
+    columns:
+      - name: id
+        description: "Primary key dari material."
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Nama material"
+        tests:
+          - not_null
+      - name: is_vaccine
+        description: "Apakah material itu vaksin atau bukan "
+
+  - name: fact_stocks
+    description: "Tabel fakta berisi stok yang tersisa dalam suatu tanggal"
+    columns:
+      - name: total_qty
+        description: "Kuantitas total stok"
+      - name: entity_id
+        description: "ID faskes yang memiliki stok tersebut"
+      - name: master_material_id
+        description: "ID material dari stok tersebut"
+      - name: activity_id
+        description: "ID aktivitas yang terkait stok tersebut"
+      - name: date
+        description: "Tanggal stok"
+

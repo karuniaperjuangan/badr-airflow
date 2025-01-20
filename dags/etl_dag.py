@@ -77,14 +77,11 @@ def elt_dag():
         "master_materials",
         "stocks",
         "master_activities",
-        "batches",
-        "entity_master_material_activities",
         "entity_entity_tags",
         "provinces",
         "regencies",
         "entities",
         "entity_tags",
-        "master_material_has_activities"
     ]
 
     with TaskGroup("ingest_data_task") as ingest_data_task:

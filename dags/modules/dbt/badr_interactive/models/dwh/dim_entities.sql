@@ -1,6 +1,6 @@
 SELECT 
-    e.id,
-    e.name,
+    e.id AS id,
+    e.name AS name,
     r.name AS regency_name,
     p.name AS province_name,
     groupArray(et.title)[1] AS tag
